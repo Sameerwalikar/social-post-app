@@ -23,7 +23,7 @@ app.use(compression());
 app.use(morgan("dev"));
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(mongoSanitize());
+//app.use(mongoSanitize());
 
 app.use("/uploads", express.static(path.resolve(process.cwd(), "uploads")));
 

@@ -16,9 +16,15 @@ const notFoundHandler = (req, _res, next) => {
 };
 
 const errorHandler = (err, _req, res, _next) => {
+  console.error("========== ERROR ==========");
+  console.error(err);
+  console.error(err.stack);
+  console.error("==========================");
+
   const statusCode = err.statusCode || 500;
   const message =
     err.message || (statusCode === 500 ? "Internal server error" : "Request failed");
+
   return errorResponse(res, message, statusCode);
 };
 
