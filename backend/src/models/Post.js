@@ -35,13 +35,13 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-postSchema.pre("validate", function ensureContent(next) {
+postSchema.pre("validate", function ensureContent() {
   const hasText = Boolean((this.text || "").trim());
   const hasImage = Boolean(this.image);
+
   if (!hasText && !hasImage) {
-    return next(new Error("Post must contain text, image, or both"));
+    throw new Error("Post must contain text, image, or both");
   }
-  return next();
 });
 
 postSchema.index({ createdAt: -1 });
