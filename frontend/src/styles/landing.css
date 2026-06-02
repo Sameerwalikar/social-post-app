@@ -1,0 +1,329 @@
+/* Advanced Dark Theme Styles for Opus */
+
+:root {
+  --opus-bg: #09090b;
+  --opus-surface: #18181b;
+  --opus-surface-hover: #27272a;
+  --opus-border: rgba(255, 255, 255, 0.1);
+  --opus-text: #fafafa;
+  --opus-text-muted: #a1a1aa;
+  --opus-primary: #ffffff;
+  --opus-accent: #3b82f6;
+  --opus-glow: rgba(59, 130, 246, 0.5);
+}
+
+body {
+  background-color: var(--opus-bg) !important;
+  color: var(--opus-text);
+}
+
+.opus-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.opus-accent-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Hero Background Animation */
+.hero-background {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--opus-bg);
+}
+
+.hero-background::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
+  filter: blur(100px);
+  z-index: 0;
+  animation: pulseGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+  100% { transform: scale(1.2) translate(5%, 5%); opacity: 1; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glassmorphic Dark Card */
+.glassmorphic-card {
+  background: rgba(24, 24, 27, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--opus-border);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.glassmorphic-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.glassmorphic-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.glassmorphic-card:hover::after {
+  opacity: 1;
+}
+
+/* Animations */
+.fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Premium Button Styles */
+.premium-button-primary {
+  background-color: var(--opus-primary) !important;
+  color: #000000 !important;
+  transition: all 0.3s ease !important;
+}
+
+.premium-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
+}
+
+.premium-button-secondary {
+  background-color: transparent !important;
+  color: var(--opus-text) !important;
+  border: 1px solid var(--opus-border) !important;
+  transition: all 0.3s ease !important;
+}
+
+.premium-button-secondary:hover {
+  background-color: var(--opus-surface) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ELITE AUTH REDESIGN STYLES */
+.auth-background {
+  position: fixed;
+  inset: 0;
+  background-color: #000000;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.auth-grid {
+  position: absolute;
+  inset: -100%;
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  animation: gridPan 60s linear infinite;
+  z-index: 1;
+}
+
+.auth-glow-1 {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
+  filter: blur(100px);
+  z-index: 2;
+  animation: pulseGlow 15s ease-in-out infinite alternate;
+}
+
+.auth-glow-2 {
+  position: absolute;
+  bottom: 0%;
+  right: 10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+  filter: blur(80px);
+  z-index: 2;
+  animation: pulseGlow 12s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes gridPan {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+.elite-glass-card {
+  background: rgba(10, 10, 12, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.elite-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.elite-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px 16px 8px 16px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.elite-input:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.elite-input:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6, inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.elite-label {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  color: #a1a1aa;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left top;
+}
+
+.elite-input:focus ~ .elite-label,
+.elite-input:not(:placeholder-shown) ~ .elite-label {
+  transform: translateY(-8px) scale(0.75);
+  color: #ffffff;
+}
+
+.elite-input:focus ~ .elite-label {
+  color: #3b82f6;
+}
+
+.elite-button {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.elite-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+  background: #f4f4f5;
+}
+
+.elite-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.elite-button:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ELITE FLOATING PILL NAVBAR */
+.elite-navbar-container {
+  position: fixed;
+  top: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: none; /* Allows clicking through the container */
+}
+
+.elite-navbar-pill {
+  pointer-events: auto; /* Re-enable clicks on the pill itself */
+  background: rgba(10, 10, 12, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  padding: 8px 12px 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elite-nav-link {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 100px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elite-nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
