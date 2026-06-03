@@ -6,7 +6,6 @@ const registerValidator = [
   body("password")
     .isLength({ min: 8 })
     .withMessage("Password must be at least 8 characters"),
-  body("avatar").optional().isURL().withMessage("Avatar must be a valid URL"),
 ];
 
 const loginValidator = [
