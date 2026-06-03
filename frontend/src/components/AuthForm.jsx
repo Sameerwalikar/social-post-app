@@ -6,7 +6,6 @@ export const AuthForm = ({ mode, onSubmit, loading }) => {
     username: "",
     email: "",
     password: "",
-    avatar: "",
   });
   const [error, setError] = useState("");
 
@@ -85,20 +84,6 @@ export const AuthForm = ({ mode, onSubmit, loading }) => {
         />
         <label htmlFor="password-input" className="elite-label">Password</label>
       </Box>
-
-      {mode === "register" && (
-        <Box className="elite-input-container">
-          <input 
-            type="url" 
-            className="elite-input" 
-            value={values.avatar} 
-            onChange={handleChange("avatar")} 
-            placeholder=" "
-            id="avatar-input"
-          />
-          <label htmlFor="avatar-input" className="elite-label">Avatar URL (Optional)</label>
-        </Box>
-      )}
 
       <button type="submit" className="elite-button" disabled={loading} style={{ marginTop: "32px" }}>
         {loading ? (

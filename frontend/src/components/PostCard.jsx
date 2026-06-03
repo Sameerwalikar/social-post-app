@@ -14,6 +14,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import dayjs from "dayjs";
 import { CommentModal } from "./CommentModal";
+import { resolveMediaUrl } from "../utils/media";
 
 const imageUrl = (src) =>
   src ? `${(import.meta.env.VITE_SERVER_URL || "http://localhost:5000").replace(/\/$/, "")}${src}` : "";
@@ -27,7 +28,7 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
       <Card>
         <CardContent>
           <Stack direction="row" spacing={1.5} alignItems="center" mb={1.5}>
-            <Avatar src={post.user?.avatar}>{post.user?.username?.[0]}</Avatar>
+            <Avatar src={resolveMediaUrl(post.user?.avatar)}>{post.user?.username?.[0]}</Avatar>
             <Stack>
               <Typography fontWeight={700}>{post.user?.username}</Typography>
               <Typography variant="caption" color="text.secondary">

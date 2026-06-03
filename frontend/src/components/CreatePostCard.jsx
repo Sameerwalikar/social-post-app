@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Avatar, Box, Button, Card, CardContent, Stack, TextField } from "@mui/material";
 import toast from "react-hot-toast";
+import { resolveMediaUrl } from "../utils/media";
 
 export const CreatePostCard = ({ user, onCreate }) => {
   const [text, setText] = useState("");
@@ -41,7 +42,7 @@ export const CreatePostCard = ({ user, onCreate }) => {
     <Card>
       <CardContent component="form" onSubmit={handleSubmit}>
         <Stack direction="row" spacing={2}>
-          <Avatar src={user?.avatar}>{user?.username?.[0]}</Avatar>
+          <Avatar src={resolveMediaUrl(user?.avatar)}>{user?.username?.[0]}</Avatar>
           <TextField
             fullWidth
             multiline

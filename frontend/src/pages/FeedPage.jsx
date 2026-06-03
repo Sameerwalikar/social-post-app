@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Avatar, Box, Button, Container, Stack, Typography } from "@mui/material";
 import toast from "react-hot-toast";
+import { resolveMediaUrl } from "../utils/media";
 import { CreatePostCard } from "../components/CreatePostCard";
 import { EmptyState } from "../components/EmptyState";
 import { FeedSkeleton } from "../components/FeedSkeleton";
@@ -13,6 +15,7 @@ export const FeedPage = () => {
   const sentinelRef = useRef(null);
   const { user, logout } = useAuth();
   const { posts, loading, pagination, fetchPosts, createPost, toggleLike, addComment } = usePosts();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPosts({ page: 1, reset: true }).catch((error) => toast.error(error));
@@ -30,12 +33,15 @@ export const FeedPage = () => {
     <Container maxWidth="sm" sx={{ py: 3 }}>
       <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
         <Stack direction="row" spacing={1.5} alignItems="center">
-          <Avatar src={user?.avatar}>{user?.username?.[0]}</Avatar>
+          <Avatar src={resolveMediaUrl(user?.avatar)}>{user?.username?.[0]}</Avatar>
           <Typography variant="h6">Hi, {user?.username}</Typography>
         </Stack>
-        <Button variant="outlined" onClick={logout}>
-          Logout
-        </Button>
+        <Stack direction="row" spacing={1}>
+          <Button variant="outlined" onClick={() => navigate("/profile")}>Profile</Button>
+          <Button variant="outlined" onClick={logout}>
+            Logout
+          </Button>
+        </Stack>
       </Stack>
 
       <Stack spacing={2}>

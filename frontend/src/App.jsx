@@ -10,6 +10,7 @@ const RegisterPage = lazy(() =>
   import("./pages/RegisterPage").then((mod) => ({ default: mod.RegisterPage }))
 );
 const LandingPage = lazy(() => import("./pages/LandingPage").then((mod) => ({ default: mod.LandingPage })));
+const ProfilePage = lazy(() => import("./pages/ProfilePage").then((mod) => ({ default: mod.ProfilePage })));
 
 function App() {
   return (
@@ -30,6 +31,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <FeedPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
               </ProtectedRoute>
             }
           />

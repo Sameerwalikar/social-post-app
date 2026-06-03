@@ -38,6 +38,11 @@ export const AuthProvider = ({ children }) => {
     storage.setUser(authUser);
   };
 
+  const updateUser = (authUser) => {
+    setUser(authUser);
+    storage.setUser(authUser);
+  };
+
   const logout = () => {
     setToken(null);
     setUser(null);
@@ -53,6 +58,7 @@ export const AuthProvider = ({ children }) => {
       isAuthenticated: Boolean(token),
       login,
       logout,
+      updateUser,
     }),
     [user, token, initializing]
   );

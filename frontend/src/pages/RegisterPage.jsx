@@ -12,10 +12,10 @@ export const RegisterPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async ({ username, email, password, avatar }) => {
+  const handleSubmit = async ({ username, email, password }) => {
     setLoading(true);
     try {
-      const response = await authService.register({ username, email, password, avatar });
+      const response = await authService.register({ username, email, password });
       login(response.data);
       toast.success("Account provisioned successfully", { 
         style: { borderRadius: '10px', background: '#333', color: '#fff' }
