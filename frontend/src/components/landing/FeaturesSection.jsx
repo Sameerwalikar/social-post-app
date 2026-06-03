@@ -1,4 +1,5 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { BRAND_NAME } from "../../constants/brand";
 import DynamicFeedRoundedIcon from "@mui/icons-material/DynamicFeedRounded";
 import SpeedRoundedIcon from "@mui/icons-material/SpeedRounded";
 import SecurityRoundedIcon from "@mui/icons-material/SecurityRounded";
@@ -6,25 +7,29 @@ import DataUsageRoundedIcon from "@mui/icons-material/DataUsageRounded";
 
 const features = [
   {
-    icon: <SpeedRoundedIcon sx={{ fontSize: 32 }} />,
-    title: "Zero Latency",
-    description: "Built on a global edge network. Experience instant interactions and seamless transitions that feel native."
-  },
-  {
-    icon: <SecurityRoundedIcon sx={{ fontSize: 32 }} />,
-    title: "Enterprise Security",
-    description: "Military-grade encryption for all communications. Your data never leaves our zero-trust architecture."
-  },
-  {
     icon: <DynamicFeedRoundedIcon sx={{ fontSize: 32 }} />,
-    title: "Intelligent Feed",
-    description: "Our proprietary algorithm delivers the most relevant content dynamically, adapting to your professional needs."
+    title: "Social Earning Hub",
+    description:
+      "Connect with friends, share high-paying daily tasks, and boost your earnings together through interactive community challenges.",
   },
   {
     icon: <DataUsageRoundedIcon sx={{ fontSize: 32 }} />,
-    title: "Advanced Analytics",
-    description: "Gain deep insights into your network engagement with our comprehensive, real-time analytics suite."
-  }
+    title: "Live Leaderboards",
+    description:
+      "Compete in daily and weekly community streaks. Track your rank in real-time and unlock exclusive cash bonuses for hitting the top tiers.",
+  },
+  {
+    icon: <SpeedRoundedIcon sx={{ fontSize: 32 }} />,
+    title: "Instant Payouts",
+    description:
+      "Complete bite-sized tasks, accumulate reward points seamlessly, and cash out instantly to your favorite digital wallets.",
+  },
+  {
+    icon: <SecurityRoundedIcon sx={{ fontSize: 32 }} />,
+    title: "Verified Tasks",
+    description:
+      "100% secure, scam-free marketplace. Every single survey, quiz, and application review is pre-vetted for guaranteed payouts.",
+  },
 ];
 
 export const FeaturesSection = () => {
@@ -33,10 +38,10 @@ export const FeaturesSection = () => {
       <Container maxWidth="lg">
         <Box textAlign="center" mb={10} className="fade-in-up">
           <Typography variant="h2" sx={{ fontWeight: 800, mb: 2.5, fontSize: { xs: "2.5rem", md: "4rem" }, color: "#ffffff", letterSpacing: "-0.02em" }}>
-            Uncompromising <span className="opus-gradient-text">Performance</span>
+            Uncompromising <span className="taskplanet-gradient-text">Performance</span>
           </Typography>
           <Typography variant="h6" sx={{ fontWeight: 400, maxWidth: 640, mx: "auto", color: "#a1a1aa", lineHeight: 1.6 }}>
-            Opus sets a new benchmark for what a professional platform should be. Meticulously engineered from the ground up.
+            {BRAND_NAME} sets a new benchmark for what a professional platform should be. Meticulously engineered from the ground up.
           </Typography>
         </Box>
 

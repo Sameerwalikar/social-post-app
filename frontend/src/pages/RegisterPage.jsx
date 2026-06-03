@@ -27,7 +27,7 @@ export const RegisterPage = () => {
   };
 
   return (
-    <AuthLayout title="Create an account" subtitle="Join Opus to continue.">
+    <AuthLayout title="Create an account" subtitle="Join TaskPlanet to continue.">
       <AuthForm mode="register" onSubmit={handleSubmit} loading={loading} />
       <Box mt={4} textAlign="center">
         <Typography variant="body2" sx={{ color: "#a1a1aa" }}>

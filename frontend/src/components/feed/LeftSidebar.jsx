@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Box, Collapse, List, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
+import { useMemo, useState } from "react";
+import { Box, Collapse, List, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
@@ -8,16 +8,6 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-
-const navItemSx = {
-  borderRadius: 2,
-  py: 0.75,
-  "&.Mui-selected": {
-    bgcolor: "#f6f7f8",
-    "& .MuiListItemText-primary": { fontWeight: 700, color: "#1a1a1b" },
-  },
-  "&:hover": { bgcolor: "#f6f7f8" },
-};
 
 const SectionHeading = ({ children, action }) => (
   <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", px: 1, py: 1, mt: 1 }}>
@@ -55,8 +45,22 @@ const RECENT_COMMUNITIES = [
 ];
 
 export const LeftSidebar = ({ activeNav = "home", onNavChange }) => {
+  const theme = useTheme();
   const [modOpen, setModOpen] = useState(true);
   const [recentOpen, setRecentOpen] = useState(true);
+
+  const navItemSx = useMemo(
+    () => ({
+      borderRadius: 2,
+      py: 0.75,
+      "&.Mui-selected": {
+        bgcolor: "action.hover",
+        "& .MuiListItemText-primary": { fontWeight: 700, color: "text.primary" },
+      },
+      "&:hover": { bgcolor: "action.hover" },
+    }),
+    [theme.palette.mode]
+  );
 
   const mainNav = [
     { id: "home", label: "Home", icon: <HomeOutlinedIcon fontSize="small" /> },
@@ -80,7 +84,7 @@ export const LeftSidebar = ({ activeNav = "home", onNavChange }) => {
             onClick={() => onNavChange?.(item.id)}
             sx={navItemSx}
           >
-            <ListItemIcon sx={{ minWidth: 36, color: "#1a1a1b" }}>{item.icon}</ListItemIcon>
+            <ListItemIcon sx={{ minWidth: 36, color: "text.primary" }}>{item.icon}</ListItemIcon>
             <ListItemText primary={item.label} primaryTypographyProps={{ fontSize: 14 }} />
           </ListItemButton>
         ))}
@@ -99,7 +103,7 @@ export const LeftSidebar = ({ activeNav = "home", onNavChange }) => {
         <List dense disablePadding>
           {modNav.map((item) => (
             <ListItemButton key={item.id} sx={navItemSx} onClick={() => onNavChange?.(item.id)}>
-              <ListItemIcon sx={{ minWidth: 36, color: "#1a1a1b" }}>{item.icon}</ListItemIcon>
+              <ListItemIcon sx={{ minWidth: 36, color: "text.primary" }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.label} primaryTypographyProps={{ fontSize: 14 }} />
             </ListItemButton>
           ))}

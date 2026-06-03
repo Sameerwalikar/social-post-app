@@ -1,6 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import "../styles/landing.css"; 
+import { BrandLogo } from "../components/BrandLogo";
+import { BRAND_NAME } from "../constants/brand";
+import "../styles/landing.css";
 
 export const AuthLayout = ({ title, subtitle, children }) => (
   <Box className="auth-background" sx={{ display: "flex", minHeight: "100vh", alignItems: "center", justifyContent: "center", p: 2 }}>
@@ -24,9 +26,12 @@ export const AuthLayout = ({ title, subtitle, children }) => (
     >
       <Box sx={{ mb: 6, textAlign: "center", width: "100%" }}>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <Typography variant="h5" sx={{ fontWeight: 800, letterSpacing: "-1px", color: "#ffffff", mb: 4, display: "inline-block" }}>
-            Opus.
-          </Typography>
+          <Stack direction="row" alignItems="center" justifyContent="center" spacing={1} sx={{ mb: 4 }}>
+            <BrandLogo size={36} />
+            <Typography variant="h5" sx={{ fontWeight: 800, letterSpacing: "-1px", color: "#ffffff" }}>
+              {BRAND_NAME}
+            </Typography>
+          </Stack>
         </Link>
         <Typography variant="h4" sx={{ fontWeight: 700, mb: 1.5, color: "#ffffff", letterSpacing: "-0.03em" }}>
           {title}

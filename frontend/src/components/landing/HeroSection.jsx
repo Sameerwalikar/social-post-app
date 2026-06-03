@@ -1,6 +1,7 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import { BRAND_NAME } from "../../constants/brand";
 
 export const HeroSection = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const HeroSection = () => {
             letterSpacing: 0.5, 
             mb: 1 
           }}>
-            Opus v2.0 is now available
+            {BRAND_NAME} v2.0 is now available
           </Box> */}
 
           <Typography
@@ -37,7 +38,7 @@ export const HeroSection = () => {
               color: "#ffffff"
             }}
           >
-            The new standard <br />for <span className="opus-accent-text">connection.</span>
+            The new standard for <span style={{ color: "#3b82f6" }}>connection.</span>
           </Typography>
 
           <Typography
@@ -52,7 +53,7 @@ export const HeroSection = () => {
               fontSize: { xs: "1.1rem", md: "1.25rem" }
             }}
           >
-            Opus is the enterprise-grade social platform designed for elite professionals. Engineered for speed, security, and unparalleled aesthetic excellence.
+            {BRAND_NAME} is the enterprise-grade social platform designed for elite professionals. Engineered for speed, security, and unparalleled aesthetic excellence.
           </Typography>
 
           <Stack

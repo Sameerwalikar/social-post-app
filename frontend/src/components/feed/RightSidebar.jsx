@@ -27,9 +27,11 @@ export const RightSidebar = ({ posts, onClear }) => {
       <Card
         elevation={0}
         sx={{
-          border: "1px solid #edeff1",
+          border: "1px solid",
+          borderColor: "divider",
           borderRadius: 2,
           overflow: "hidden",
+          bgcolor: "background.paper",
         }}
       >
         <CardContent sx={{ p: 0, "&:last-child": { pb: 0 } }}>
@@ -40,7 +42,8 @@ export const RightSidebar = ({ posts, onClear }) => {
               justifyContent: "space-between",
               px: 2,
               py: 1.5,
-              borderBottom: "1px solid #edeff1",
+              borderBottom: "1px solid",
+              borderColor: "divider",
             }}
           >
             <Typography variant="subtitle2" fontWeight={700}>
@@ -60,7 +63,7 @@ export const RightSidebar = ({ posts, onClear }) => {
               No posts to show yet.
             </Typography>
           ) : (
-            <Stack divider={<Box sx={{ borderBottom: "1px solid #edeff1" }} />}>
+            <Stack divider={<Box sx={{ borderBottom: "1px solid", borderColor: "divider" }} />}>
               {recent.map((post) => {
                 const url = extractUrl(post.text);
                 return (
@@ -70,7 +73,7 @@ export const RightSidebar = ({ posts, onClear }) => {
                       display: "flex",
                       gap: 1.5,
                       p: 1.5,
-                      "&:hover": { bgcolor: "#f6f7f8" },
+                      "&:hover": { bgcolor: "action.hover" },
                     }}
                   >
                     <Box sx={{ flex: 1, minWidth: 0 }}>

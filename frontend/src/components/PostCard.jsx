@@ -60,10 +60,11 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
       <Card
         elevation={0}
         sx={{
-          border: "1px solid #edeff1",
+          border: "1px solid",
+          borderColor: "divider",
           borderRadius: 2,
           overflow: "hidden",
-          bgcolor: "#fff",
+          bgcolor: "background.paper",
         }}
       >
         <Box sx={{ p: 2 }}>
@@ -117,7 +118,7 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
                 <Typography
                   variant="subtitle1"
                   fontWeight={700}
-                  sx={{ color: "#1a1a1b", lineHeight: 1.35, mb: link || body ? 0.5 : 0 }}
+                  sx={{ color: "text.primary", lineHeight: 1.35, mb: link || body ? 0.5 : 0 }}
                 >
                   {title}
                 </Typography>
@@ -126,7 +127,7 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
                   <Typography
                     variant="subtitle1"
                     fontWeight={700}
-                    sx={{ color: "#1a1a1b", lineHeight: 1.35, mb: 0.5 }}
+                    sx={{ color: "text.primary", lineHeight: 1.35, mb: 0.5 }}
                   >
                     {post.text.length > 200 ? `${post.text.slice(0, 200)}…` : post.text}
                   </Typography>
@@ -177,7 +178,8 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
                   objectFit: "cover",
                   borderRadius: 1,
                   flexShrink: 0,
-                  border: "1px solid #edeff1",
+                  border: "1px solid",
+                  borderColor: "divider",
                 }}
               />
             )}
@@ -190,16 +192,17 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
             justifyContent="space-between"
             mt={1.5}
             pt={1}
-            sx={{ borderTop: "1px solid #f6f7f8" }}
+            sx={{ borderTop: "1px solid", borderColor: "divider" }}
           >
             <Stack direction="row" alignItems="center" spacing={0}>
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  bgcolor: "#f6f7f8",
+                  bgcolor: "action.hover",
                   borderRadius: "999px",
-                  border: "1px solid #edeff1",
+                  border: "1px solid",
+                  borderColor: "divider",
                   overflow: "hidden",
                 }}
               >
@@ -208,8 +211,8 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
                   onClick={() => onLike(post._id)}
                   sx={{
                     borderRadius: 0,
-                    color: liked ? "#ff4500" : "#878a8c",
-                    "&:hover": { bgcolor: "#e9ebee" },
+                    color: liked ? "#ff4500" : "text.secondary",
+                    "&:hover": { bgcolor: "action.selected" },
                   }}
                 >
                   <ArrowUpwardIcon fontSize="small" />
@@ -221,7 +224,7 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
                     px: 0.5,
                     minWidth: 24,
                     textAlign: "center",
-                    color: liked ? "#ff4500" : "#1a1a1b",
+                    color: liked ? "#ff4500" : "text.primary",
                     fontSize: 13,
                   }}
                 >
@@ -229,7 +232,7 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
                 </Typography>
                 <IconButton
                   size="small"
-                  sx={{ borderRadius: 0, color: "#878a8c", "&:hover": { bgcolor: "#e9ebee" } }}
+                  sx={{ borderRadius: 0, color: "text.secondary", "&:hover": { bgcolor: "action.selected" } }}
                 >
                   <ArrowDownwardIcon fontSize="small" />
                 </IconButton>
@@ -241,11 +244,11 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
                 sx={{
                   ml: 1,
                   textTransform: "none",
-                  color: "#878a8c",
+                  color: "text.secondary",
                   fontWeight: 700,
                   fontSize: 13,
                   borderRadius: "999px",
-                  "&:hover": { bgcolor: "#f6f7f8" },
+                  "&:hover": { bgcolor: "action.hover" },
                 }}
               >
                 {post.comments.length}
@@ -255,18 +258,18 @@ export const PostCard = ({ post, currentUserId, onLike, onComment }) => {
                 startIcon={<ShareOutlinedIcon sx={{ fontSize: 18 }} />}
                 sx={{
                   textTransform: "none",
-                  color: "#878a8c",
+                  color: "text.secondary",
                   fontWeight: 700,
                   fontSize: 13,
                   borderRadius: "999px",
-                  "&:hover": { bgcolor: "#f6f7f8" },
+                  "&:hover": { bgcolor: "action.hover" },
                 }}
               >
                 Share
               </Button>
             </Stack>
 
-            <IconButton size="small" sx={{ color: "#878a8c" }}>
+            <IconButton size="small" sx={{ color: "text.secondary" }}>
               <OutlinedFlagIcon fontSize="small" />
             </IconButton>
           </Stack>

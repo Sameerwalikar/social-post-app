@@ -1,12 +1,6 @@
 import { createTheme } from "@mui/material";
 
-export const theme = createTheme({
-  palette: {
-    mode: "light",
-    primary: { main: "#7c3aed" },
-    secondary: { main: "#ff5f7a" },
-    background: { default: "#f4f6fb", paper: "#ffffff" },
-  },
+const shared = {
   shape: { borderRadius: 12 },
   typography: {
     fontFamily: "Inter, system-ui, sans-serif",
@@ -21,4 +15,27 @@ export const theme = createTheme({
       },
     },
   },
-});
+};
+
+export const getTheme = (mode = "light") =>
+  createTheme({
+    ...shared,
+    palette: {
+      mode,
+      primary: { main: "#7c3aed" },
+      secondary: { main: "#ff5f7a" },
+      ...(mode === "dark"
+        ? {
+            background: { default: "#0b0b0c", paper: "#1a1a1b" },
+            text: { primary: "#d7dadc", secondary: "#818384" },
+            divider: "#343536",
+          }
+        : {
+            background: { default: "#f6f7f8", paper: "#ffffff" },
+            text: { primary: "#1a1a1b", secondary: "#878a8c" },
+            divider: "#edeff1",
+          }),
+    },
+  });
+
+export const theme = getTheme("light");

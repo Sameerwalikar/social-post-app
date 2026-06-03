@@ -1,5 +1,7 @@
 import { Box, Container, Stack, Typography, IconButton, Divider, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { BrandLogo } from "../components/BrandLogo";
+import { BRAND_NAME } from "../constants/brand";
 import { HeroSection } from "../components/landing/HeroSection";
 import { FeaturesSection } from "../components/landing/FeaturesSection";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -16,14 +18,17 @@ export const LandingPage = () => {
       {/* Elite Floating Pill Navigation */}
       <Box className="elite-navbar-container fade-in-up">
         <Box className="elite-navbar-pill">
-          <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: "-1px", color: "#ffffff", mr: 4 }}>
-            Opus.
-          </Typography>
+          <Stack direction="row" alignItems="center" spacing={1} sx={{ mr: 4 }}>
+            <BrandLogo size={28} />
+            <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: "-1px", color: "#ffffff" }}>
+              {BRAND_NAME}
+            </Typography>
+          </Stack>
           
           <Stack direction="row" spacing={1} alignItems="center" display={{ xs: "none", md: "flex" }}>
-            <Box className="elite-nav-link">Features</Box>
-            <Box className="elite-nav-link">Customers</Box>
-            <Box className="elite-nav-link">Pricing</Box>
+            <Box className="elite-nav-link">How It Works</Box>
+            <Box className="elite-nav-link">Community</Box>
+            <Box className="elite-nav-link">Withdrawals</Box>
           </Stack>
           
           <Box sx={{ ml: "auto", pl: 2 }}>
@@ -59,9 +64,12 @@ export const LandingPage = () => {
         <Container maxWidth="lg">
           <Stack direction={{ xs: "column", md: "row" }} justifyContent="space-between" spacing={6} mb={10}>
             <Box maxWidth={300}>
-              <Typography variant="h5" sx={{ fontWeight: 800, mb: 3, letterSpacing: "-1px", color: "#ffffff" }}>
-                Opus.
-              </Typography>
+              <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 3 }}>
+                <BrandLogo size={32} />
+                <Typography variant="h5" sx={{ fontWeight: 800, letterSpacing: "-1px", color: "#ffffff" }}>
+                  {BRAND_NAME}
+                </Typography>
+              </Stack>
               <Typography variant="body2" sx={{ color: "#a1a1aa", lineHeight: 1.7 }}>
                 The professional standard for modern networking. Designed for those who demand excellence in every interaction.
               </Typography>
@@ -76,7 +84,7 @@ export const LandingPage = () => {
               </Stack>
               <Stack spacing={2.5}>
                 <Typography variant="subtitle2" sx={{ fontWeight: 600, color: "#ffffff" }}>Company</Typography>
-                <Typography variant="body2" sx={{ color: "#a1a1aa", cursor: "pointer", "&:hover": { color: "#fff" } }}>About Opus</Typography>
+                <Typography variant="body2" sx={{ color: "#a1a1aa", cursor: "pointer", "&:hover": { color: "#fff" } }}>About {BRAND_NAME}</Typography>
                 <Typography variant="body2" sx={{ color: "#a1a1aa", cursor: "pointer", "&:hover": { color: "#fff" } }}>Careers</Typography>
                 <Typography variant="body2" sx={{ color: "#a1a1aa", cursor: "pointer", "&:hover": { color: "#fff" } }}>Contact</Typography>
               </Stack>
@@ -87,7 +95,7 @@ export const LandingPage = () => {
           
           <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems="center" spacing={2}>
             <Typography variant="body2" sx={{ color: "#52525b" }}>
-              &copy; {new Date().getFullYear()} Opus Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} {BRAND_NAME} Inc. All rights reserved.
             </Typography>
             <Stack direction="row" spacing={1}>
               <IconButton size="small" sx={{ color: "#a1a1aa", "&:hover": { color: "#fff", backgroundColor: "rgba(255,255,255,0.1)" } }}>

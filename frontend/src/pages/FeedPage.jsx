@@ -11,6 +11,7 @@ import { PostCard } from "../components/PostCard";
 import { useAuth } from "../hooks/useAuth";
 import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import { usePosts } from "../hooks/usePosts";
+import { useThemeMode } from "../context/ThemeModeContext";
 import "../styles/feed.css";
 
 export const FeedPage = () => {
@@ -21,6 +22,7 @@ export const FeedPage = () => {
   const [activeNav, setActiveNav] = useState("home");
   const [searchQuery, setSearchQuery] = useState("");
   const [recentHidden, setRecentHidden] = useState(false);
+  const { mode, isDark } = useThemeMode();
 
   useEffect(() => {
     fetchPosts({ page: 1, reset: true }).catch((error) => toast.error(error));
@@ -47,13 +49,14 @@ export const FeedPage = () => {
   const recentPosts = recentHidden ? [] : filteredPosts;
 
   return (
-    <div className="feed-shell">
+    <div className="feed-shell" data-theme={mode}>
       <TopNavbar
         user={user}
         onCreateClick={() => setCreateOpen(true)}
         onLogout={logout}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
+        isDark={isDark}
       />
 
       <div className="feed-body">

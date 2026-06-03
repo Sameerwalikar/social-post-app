@@ -14,50 +14,37 @@ import SearchIcon from "@mui/icons-material/Search";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import AddIcon from "@mui/icons-material/Add";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import { useNavigate } from "react-router-dom";
+import { BrandLogo } from "../BrandLogo";
+import { BRAND_NAME } from "../../constants/brand";
+import { useThemeMode } from "../../context/ThemeModeContext";
 import { resolveMediaUrl } from "../../utils/media";
 
-const SlothLogo = () => (
-  <Box
-    component="span"
-    sx={{
-      width: 32,
-      height: 32,
-      borderRadius: "50%",
-      bgcolor: "#7c3aed",
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontSize: 18,
-      flexShrink: 0,
-    }}
-  >
-    🦥
-  </Box>
-);
-
-export const TopNavbar = ({ user, onCreateClick, onLogout, searchQuery, onSearchChange }) => {
+export const TopNavbar = ({ user, onCreateClick, onLogout, searchQuery, onSearchChange, isDark }) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
+  const { toggleMode } = useThemeMode();
 
   return (
     <header className="feed-topnav">
       <Box
-        sx={{ display: "flex", alignItems: "center", gap: 1, cursor: "pointer", minWidth: 120 }}
+        sx={{ display: "flex", alignItems: "center", gap: 1, cursor: "pointer", minWidth: 140 }}
         onClick={() => navigate("/feed")}
       >
-        <SlothLogo />
+        <BrandLogo size={32} />
         <Typography
           variant="h6"
-          sx={{ fontWeight: 800, color: "#1a1a1b", letterSpacing: "-0.02em", fontSize: "1.25rem" }}
+          sx={{ fontWeight: 800, color: "text.primary", letterSpacing: "-0.02em", fontSize: "1.25rem" }}
         >
-          slothit
+          {BRAND_NAME}
         </Typography>
       </Box>
 
       <TextField
         className="feed-topnav-search"
-        placeholder="Search slothit"
+        placeholder={`Search ${BRAND_NAME}`}
         size="small"
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
@@ -67,9 +54,9 @@ export const TopNavbar = ({ user, onCreateClick, onLogout, searchQuery, onSearch
           mx: "auto",
           "& .MuiOutlinedInput-root": {
             borderRadius: "999px",
-            bgcolor: "#f6f7f8",
-            "& fieldset": { borderColor: "#edeff1" },
-            "&:hover fieldset": { borderColor: "#ccc" },
+            bgcolor: isDark ? "#272729" : "#f6f7f8",
+            "& fieldset": { borderColor: isDark ? "#343536" : "#edeff1" },
+            "&:hover fieldset": { borderColor: isDark ? "#4a4b4d" : "#ccc" },
           },
         }}
         InputProps={{
@@ -98,10 +85,18 @@ export const TopNavbar = ({ user, onCreateClick, onLogout, searchQuery, onSearch
         >
           Create
         </Button>
-        <IconButton size="medium" sx={{ color: "#1a1a1b" }}>
+        <IconButton
+          size="medium"
+          onClick={toggleMode}
+          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          sx={{ color: "text.primary" }}
+        >
+          {isDark ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}
+        </IconButton>
+        <IconButton size="medium" sx={{ color: "text.primary" }}>
           <ChatBubbleOutlineIcon />
         </IconButton>
-        <IconButton size="medium" sx={{ color: "#1a1a1b" }}>
+        <IconButton size="medium" sx={{ color: "text.primary" }}>
           <NotificationsNoneIcon />
         </IconButton>
         <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} sx={{ p: 0.5, ml: 0.5 }}>
